@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <meta name="description" content="game">
+    <meta name="author" content="Nick Bonofiglio">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- angularCDN -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+
+    <!-- javascript fileblock -->
+    <script src="javascripts/imageDisplayDirective.js"></script>
+
+    <!-- stylesheet fileblock -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="container">
+			<h1>Hangman</h1>
+		</div>
+
+		<div ng-hide="wordInput">
+			<p>Pick a word (min. 4 characters):</p>
+			<input type="text" autocomplete="off" minlength="4" class="form-control"></input>
+			<button class="btn btn-default" type="submit">Ready, GO!</button>
+		</div>
+
+		<div ng-hide="letterInput">
+			<!-- imageDisplayDirective -->	
+			<p>Guess a letter:</p>
+			<input type="text" autocomplete="off" maxlength="1" class="form-control"></input>
+			<button class="btn btn-default" type="submit">Guess</button>
+
+
+
+</body>
+</html>
