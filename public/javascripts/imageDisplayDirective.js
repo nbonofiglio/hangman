@@ -1,12 +1,13 @@
-app.directive('hgHangmanImage', [function() {
+app.directive('imageDisplayDirective', [function() {
 	return {
 		restrict: 'E',
 		scope: {
 			incorrectCount: '@'
 		},
-		//Directive for displaying hangman image dynamically basis wrong guess count
+		
+		//dynamic image display of the Hangman
 		link: function(scope, element, attrs, controllers){
-    		var hangmanMapping = {
+    		var hangmanImages = {
 	    		0: 'images/hangman0.jpg',
 	    		1: 'images/hangman1/jpg',
 	    		2: 'images/hangman2.jpg',
@@ -21,15 +22,15 @@ app.directive('hgHangmanImage', [function() {
 	    	};
 
 	    	
-	    	scope.hangmanSrc = hangmanMapping[scope.incorrectCount]
+	    	scope.hangmanSrc = hangmanImages[scope.incorrectCount]
 
-	    	//Hook for the digest loop
+	    	//
 	    	scope.$watch(
 	    		function (scope) {
 	    			return scope.incorrectCount
 	    		}, 
 	    		function(value) {
-					scope.hangmanSrc = hangmanMapping[scope.incorrectCount]			
+					scope.hangmanSrc = hangmanImages[scope.incorrectCount]			
 		    	}
 		    );
       	},

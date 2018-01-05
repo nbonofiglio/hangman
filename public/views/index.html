@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="app">
 <head>
 
     <meta charset="UTF-8">
@@ -12,7 +12,11 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
 
     <!-- javascript fileblock -->
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/hangmanController.js"></script>
+    <script src="javascripts/wordInputService.js"></script>
     <script src="javascripts/imageDisplayDirective.js"></script>
+    <script src="javascripts/letterGuessService.js"></script>
 
     <!-- stylesheet fileblock -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -20,25 +24,33 @@
 
 </head>
 
-<body>
+<body ng-controller="hangmanController">
 	<div class="container">
 		<div class="container">
 			<h1>Hangman</h1>
 		</div>
 
-		<div ng-hide="wordInput">
+		<!-- word input form -->
+
+		<form ng-hide="hideWordSubmit">
 			<p>Pick a word (min. 4 characters):</p>
-			<input type="text" autocomplete="off" minlength="4" class="form-control"></input>
-			<button class="btn btn-default" type="submit">Ready, GO!</button>
-		</div>
+				<input type="text" autocomplete="off" minlength="4">
+				<button class="btn btn-default" type="submit" ng-model="hideWordSubmit">Ready, GO!</button>
+		</form>
 
-		<div ng-hide="letterInput">
-			<!-- imageDisplayDirective -->	
-			<p>Guess a letter:</p>
-			<input type="text" autocomplete="off" maxlength="1" class="form-control"></input>
-			<button class="btn btn-default" type="submit">Guess</button>
+		<!-- letter input form -->
+		<div ng-show="hideWordSubmit">
+			<div style="height:60px">
+        <image-display incorrect-count="5"></image-display>
+      </div>
 
-
+			<form ng-show="hideWordSubmit">	
+				<p>Guess a letter:</p>
+				<input type="text" autocomplete="off" maxlength="1" class="form-control">
+				<button class="btn btn-default" type="submit">Guess</button>
+			</form> <!-- ends guess letter form -->
+		</div> <!-- ends game container -->
+	</div> <!--ends parent container -->
 
 </body>
 </html>
